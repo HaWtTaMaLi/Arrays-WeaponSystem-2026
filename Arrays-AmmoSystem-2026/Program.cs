@@ -8,8 +8,8 @@ namespace Arrays_WeaopnSystem_2026
         //currentweapon
         //fire()
         static string[] Weapon = {"Pistol", "Shotgun", "Rocket", "Rifle"};
-        static int[] weaponCapacity = { 9, 5, 1, 50 };
-        static int[] weaponPower = { 2, 5, 8, 3 };
+        static int[] weaponCapacity = { 9, 5, 1, 50 }; //how much the weapon can hold at once
+        static int[] weaponPower = { 2, 5, 8, 3 }; //how much damage the weapon does
 
         //
         static int[] loadedAmmo = { 0, 0, 0, 0 }; //amount of ammo inside weapon, current ammo
@@ -20,25 +20,33 @@ namespace Arrays_WeaopnSystem_2026
         {
             //Console.WriteLine("Hello world");
 
+            //Pistol
             SwitchWeapon(0);
             ShowWeaponHUD();
             PickupAmmo(10);
             ShowWeaponHUD();
 
-            SwitchWeapon(1);
-            ShowWeaponHUD();
-            PickupAmmo(40);
+            ReloadAmmo();
+
             ShowWeaponHUD();
 
-            SwitchWeapon(2);
-            ShowWeaponHUD();
-            PickupAmmo(30);
-            ShowWeaponHUD();
+            ////Shotgun
+            //SwitchWeapon(1);
+            //ShowWeaponHUD();
+            //PickupAmmo(40);
+            //ShowWeaponHUD();
 
-            SwitchWeapon(3);
-            ShowWeaponHUD();
-            PickupAmmo(50);
-            ShowWeaponHUD();
+            ////Rocket
+            //SwitchWeapon(2);
+            //ShowWeaponHUD();
+            //PickupAmmo(30);
+            //ShowWeaponHUD();
+
+            ////Rifle
+            //SwitchWeapon(3);
+            //ShowWeaponHUD();
+            //PickupAmmo(50);
+            //ShowWeaponHUD();
 
         }
 
@@ -89,7 +97,13 @@ namespace Arrays_WeaopnSystem_2026
 
         static void ReloadAmmo()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Reloading ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(Weapon[currentWeapon]);
             //reserveAmmo[currentWeapon] + loadedAmmo[currentWeapon] of weaponCapacity[currentWeapon]
+            loadedAmmo[currentWeapon] += weaponCapacity[currentWeapon];
+            reserveAmmo[currentWeapon] -= weaponCapacity[currentWeapon];
         }
 
         static void SwitchWeapon(int newWeapon)
@@ -98,6 +112,7 @@ namespace Arrays_WeaopnSystem_2026
 
             //and after playing with the hud i realized it was way easier then i was thinking it was LOL
             currentWeapon = newWeapon;
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("\nChanged Weapon: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
