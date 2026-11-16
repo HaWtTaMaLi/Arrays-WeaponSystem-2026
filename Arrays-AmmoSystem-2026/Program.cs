@@ -16,65 +16,67 @@ namespace Arrays_WeaopnSystem_2026
         static int[] reserveAmmo= { 0, 0, 0, 0 }; //ammo on player not in weapon
         static int currentWeapon;
 
+        static int maxAmmoHeld = 100;
+
         static void Main()
         {
             //Console.WriteLine("Hello world");
 
             //Pistol
-            //SwitchWeapon(0);
-            //Fire();
-            //ShowWeaponHUD();
-            //PickupAmmo(3);
-            //ShowWeaponHUD();
-            //ReloadAmmo();
-            //ShowWeaponHUD();
-            //Fire();
-            //ShowWeaponHUD();
-
-            //Console.ForegroundColor = ConsoleColor.Cyan;
-            //Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            //Console.ForegroundColor = ConsoleColor.White;
-
-            ////Shotgun
-            SwitchWeapon(1);
+            SwitchWeapon(0);
             Fire();
             ShowWeaponHUD();
-            PickupAmmo(40);
+            PickupAmmo(3);
             ShowWeaponHUD();
             ReloadAmmo();
             ShowWeaponHUD();
             Fire();
             ShowWeaponHUD();
 
-            //Console.ForegroundColor = ConsoleColor.Cyan;
-            //Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            //Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.ForegroundColor = ConsoleColor.White;
 
-            //////Rocket
-            //SwitchWeapon(2);
-            //Fire();
-            //ShowWeaponHUD();
-            //PickupAmmo(30);
-            //ShowWeaponHUD();
-            //ReloadAmmo();
-            //ShowWeaponHUD();
-            //Fire();
-            //ShowWeaponHUD();
+            //Shotgun
+            SwitchWeapon(1);
+            Fire();
+            ShowWeaponHUD();
+            PickupAmmo(5);
+            ShowWeaponHUD();
+            ReloadAmmo();
+            ShowWeaponHUD();
+            Fire();
+            ShowWeaponHUD();
 
-            //Console.ForegroundColor = ConsoleColor.Cyan;
-            //Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            //Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.ForegroundColor = ConsoleColor.White;
 
-            //////Rifle
-            //SwitchWeapon(3);
-            //Fire();
-            //ShowWeaponHUD();
-            //PickupAmmo(50);
-            //ShowWeaponHUD();
-            //ReloadAmmo();
-            //ShowWeaponHUD();
-            //Fire();
-            //ShowWeaponHUD();
+            //Rocket
+            SwitchWeapon(2);
+            Fire();
+            ShowWeaponHUD();
+            PickupAmmo(30);
+            ShowWeaponHUD();
+            ReloadAmmo();
+            ShowWeaponHUD();
+            Fire();
+            ShowWeaponHUD();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            //Rifle
+            SwitchWeapon(3);
+            Fire();
+            ShowWeaponHUD();
+            PickupAmmo(50);
+            ShowWeaponHUD();
+            ReloadAmmo();
+            ShowWeaponHUD();
+            Fire();
+            ShowWeaponHUD();
 
         }
 
@@ -111,8 +113,10 @@ namespace Arrays_WeaopnSystem_2026
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("\nNo ");
+
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(Weapon[currentWeapon]);
+
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(" Ammo");
 
@@ -127,7 +131,7 @@ namespace Arrays_WeaopnSystem_2026
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("\nFired ");
 
-            Console.ForegroundColor= ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(Weapon[currentWeapon]);
 
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -137,6 +141,22 @@ namespace Arrays_WeaopnSystem_2026
 
         static void PickupAmmo(int addAmmo)
         {
+            //if the added ammo is greater then max Ammo held
+            if (addAmmo > maxAmmoHeld)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(Weapon[currentWeapon]);
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(" ammo is full");
+
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                //set it to stay at max
+                reserveAmmo[currentWeapon] = maxAmmoHeld;
+                return;
+            }
+
             reserveAmmo[currentWeapon] += addAmmo;
 
             //
@@ -154,16 +174,46 @@ namespace Arrays_WeaopnSystem_2026
 
         static void ReloadAmmo()
         {
-            //this isnt right
-            //fix
-            int ammountToLoad;
-            int leftOvers;
+            if (reserveAmmo[currentWeapon] == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("No ammo in bag, can't reload ");
 
-            ammountToLoad = reserveAmmo[currentWeapon];
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(Weapon[currentWeapon]);
 
-            loadedAmmo[currentWeapon] += ammountToLoad;
+                Console.ForegroundColor = ConsoleColor.Gray;
 
-            ammountToLoad -= reserveAmmo[currentWeapon];
+                return; 
+            }
+
+            int reserveAmmount = reserveAmmo[currentWeapon];
+            int reloadAmmount = weaponCapacity[currentWeapon] - loadedAmmo[currentWeapon];
+
+            //if the reserved ammo is less then weapon capacity
+            if (reserveAmmo[currentWeapon] < reloadAmmount)
+            {
+                //add ammount
+                loadedAmmo[currentWeapon] += reserveAmmount;
+                //remove ammount
+                reserveAmmo[currentWeapon] -= reserveAmmount;
+            }
+            else
+            {
+                //if the reserve ammo is greater then weapon capacity
+                //remove the weapon capacity number from ammount to load
+                reserveAmmount -= weaponCapacity[currentWeapon];
+
+                //remove the remaining number from reserved ammo
+                reserveAmmo[currentWeapon] -= reloadAmmount;
+
+                //add the weapon capacity number to loaded ammo
+                loadedAmmo[currentWeapon] += reloadAmmount;
+
+                ////debug
+                //Console.WriteLine("How much is being added back to bag? " + reserveAmmount);
+                //Console.WriteLine("How much is being added to loaded? " + reloadAmmount);
+            }
 
             //
             Console.ForegroundColor = ConsoleColor.White;
@@ -171,6 +221,8 @@ namespace Arrays_WeaopnSystem_2026
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(Weapon[currentWeapon]);
+
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         static void SwitchWeapon(int newWeapon)
