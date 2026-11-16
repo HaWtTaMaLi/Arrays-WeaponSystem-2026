@@ -7,6 +7,11 @@ namespace Arrays_WeaopnSystem_2026
         //loadedammo[]
         //currentweapon
         //fire()
+
+
+        /// <summary>
+        /// The weapon you have currently equipt
+        /// </summary>
         static string[] Weapon = {"Pistol", "Shotgun", "Rocket", "Rifle"};
         static int[] weaponCapacity = { 9, 5, 1, 50 }; //how much the weapon can hold at once
         static int[] weaponPower = { 2, 5, 8, 3 }; //how much damage the weapon does
@@ -87,7 +92,7 @@ namespace Arrays_WeaopnSystem_2026
             Console.WriteLine("\n|Weapon|"+" "+ "|Loaded|" + "  " + "|Bagged|" + " " + "|Power|");
             Console.WriteLine("-----------------------------------");
             //for
-            Console.WriteLine(" "+ Weapon[0] + "     " + loadedAmmo[0] + "/" + weaponCapacity[0] + "       " + reserveAmmo[0] + "       " + weaponPower[0]);
+            Console.WriteLine(" "+ Weapon[0].PadRight(10) + loadedAmmo[0] + "/" + weaponCapacity[0] + "".PadRight(8) + reserveAmmo[0] + "".PadRight(8) + weaponPower[0]);
             Console.WriteLine(" "+ Weapon[1] + "    " + loadedAmmo[1] + "/" + weaponCapacity[1] + "       " + reserveAmmo[1] + "       " + weaponPower[1]);
             Console.WriteLine(" "+ Weapon[2] + "     " + loadedAmmo[2] + "/" + weaponCapacity[2] + "       " + reserveAmmo[2] + "       " + weaponPower[2]);
             Console.WriteLine(" "+ Weapon[3] + "      " + loadedAmmo[3] + "/" + weaponCapacity[3] + "      " + reserveAmmo[3] + "       " + weaponPower[3]);
@@ -124,7 +129,7 @@ namespace Arrays_WeaopnSystem_2026
 
                 //Reload();
                 return;
-            }
+            } 
 
             loadedAmmo[currentWeapon]--;
 
