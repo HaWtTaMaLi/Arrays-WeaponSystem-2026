@@ -26,7 +26,7 @@ namespace Arrays_WeaopnSystem_2026
         /// </summary>
         #endregion
         static int[] weaponPower = { 2, 5, 8, 3 }; //how much damage the weapon does
-        static int[] fireRate = { 1, 2, 1, 1 };
+        static int[] bulletPerShot = { 1, 2, 1, 1 };
 
         //
         static int[] loadedAmmo = { 0, 0, 0, 0 }; //amount of ammo inside weapon, current ammo
@@ -184,7 +184,7 @@ namespace Arrays_WeaopnSystem_2026
 
         static void Fire()
         {
-            //
+            //can you fire with an empty weapon?
             if (loadedAmmo[currentWeapon] == 0)
             {
                 #region WriteLine
@@ -199,11 +199,22 @@ namespace Arrays_WeaopnSystem_2026
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 #endregion
-                return;
-            } 
+                return; //no
+            }
 
-            //
-            loadedAmmo[currentWeapon] -= fireRate[currentWeapon];
+            //if loaded ammo is not equal to fire rate then 
+            if (loadedAmmo[currentWeapon] < bulletPerShot[currentWeapon])
+            {
+                #region WriteLine
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nYou need more ammo to shoot.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                #endregion
+                return; //do nothing
+            }
+
+            //loaded ammo - the amount the current weapon can fire
+            loadedAmmo[currentWeapon] -= bulletPerShot[currentWeapon];
 
             #region WriteLine
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -235,7 +246,8 @@ namespace Arrays_WeaopnSystem_2026
                 reserveAmmo[currentWeapon] = maxAmmoHeld;
                 return;
             }
-            //
+
+            //add ammo to reserves
             reserveAmmo[currentWeapon] += addAmmo;
 
             #region WriteLine
@@ -255,7 +267,7 @@ namespace Arrays_WeaopnSystem_2026
 
         static void ReloadAmmo()
         {
-            //
+            //Can you reload a gun with no ammo?
             if (reserveAmmo[currentWeapon] == 0)
             {
                 #region WriteLine
@@ -267,10 +279,10 @@ namespace Arrays_WeaopnSystem_2026
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 #endregion
-                return; 
+                return; //no
             }
 
-            //
+            //store some values
             int reserveAmmount = reserveAmmo[currentWeapon];
             int reloadAmmount = weaponCapacity[currentWeapon] - loadedAmmo[currentWeapon];
 
