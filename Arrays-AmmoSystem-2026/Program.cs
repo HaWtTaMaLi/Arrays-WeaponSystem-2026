@@ -26,6 +26,7 @@ namespace Arrays_WeaopnSystem_2026
         /// </summary>
         #endregion
         static int[] weaponPower = { 2, 5, 8, 3 }; //how much damage the weapon does
+        static int[] fireRate = { 1, 2, 1, 1 };
 
         //
         static int[] loadedAmmo = { 0, 0, 0, 0 }; //amount of ammo inside weapon, current ammo
@@ -48,17 +49,14 @@ namespace Arrays_WeaopnSystem_2026
             Fire();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             PickupAmmo(3);
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             ReloadAmmo();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             Fire();
             ShowWeaponHUD();
@@ -78,17 +76,14 @@ namespace Arrays_WeaopnSystem_2026
             Fire();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             PickupAmmo(5);
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             ReloadAmmo();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             Fire();
             ShowWeaponHUD();
@@ -108,17 +103,14 @@ namespace Arrays_WeaopnSystem_2026
             Fire();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             PickupAmmo(30);
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             ReloadAmmo();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             Fire();
             ShowWeaponHUD();
@@ -138,17 +130,14 @@ namespace Arrays_WeaopnSystem_2026
             Fire();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             PickupAmmo(50);
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             ReloadAmmo();
             ShowWeaponHUD();
             Console.ReadKey();
-            Console.Clear();
 
             Fire();
             ShowWeaponHUD();
@@ -214,7 +203,7 @@ namespace Arrays_WeaopnSystem_2026
             } 
 
             //
-            loadedAmmo[currentWeapon]--;
+            loadedAmmo[currentWeapon] -= fireRate[currentWeapon];
 
             #region WriteLine
             Console.ForegroundColor = ConsoleColor.Yellow;
