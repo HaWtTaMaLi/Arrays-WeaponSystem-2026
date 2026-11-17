@@ -30,7 +30,7 @@ namespace Arrays_WeaopnSystem_2026
 
         //
         static int[] loadedAmmo = { 0, 0, 0, 0 }; //amount of ammo inside weapon, current ammo
-        static int[] reserveAmmo= { 0, 0, 0, 0 }; //ammo on player not in weapon
+        static int[] reserveAmmo = { 0, 0, 0, 0 }; //ammo on player not in weapon
         #region Current Sum
         /// <summary>
         /// The weapon you currently have equipt
@@ -157,13 +157,13 @@ namespace Arrays_WeaopnSystem_2026
         {
             #region Header
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\n|Weapon|"+" "+ "|Loaded|" + "  " + "|Bagged|" + " " + "|Power|");
+            Console.WriteLine("\n|Weapon|" + " " + "|Loaded|" + "  " + "|Bagged|" + " " + "|Power|");
             Console.WriteLine("-----------------------------------");
             #endregion
-            Console.WriteLine(" "+ Weapon[0].PadRight(10) + loadedAmmo[0] + "/" + weaponCapacity[0] + "".PadRight(8) + reserveAmmo[0] + "".PadRight(8) + weaponPower[0]);
-            Console.WriteLine(" "+ Weapon[1].PadRight(10) + loadedAmmo[1] + "/" + weaponCapacity[1] + "".PadRight(8) + reserveAmmo[1] + "".PadRight(8) + weaponPower[1]);
-            Console.WriteLine(" "+ Weapon[2].PadRight(10) + loadedAmmo[2] + "/" + weaponCapacity[2] + "".PadRight(8) + reserveAmmo[2] + "".PadRight(8) + weaponPower[2]);
-            Console.WriteLine(" "+ Weapon[3].PadRight(9) + loadedAmmo[3] + "/" + weaponCapacity[3] + "".PadRight(8) + reserveAmmo[3] + "".PadRight(8) + weaponPower[3]);
+            Console.WriteLine(" " + Weapon[0].PadRight(10) + loadedAmmo[0] + "/" + weaponCapacity[0] + "".PadRight(8) + reserveAmmo[0] + "".PadRight(8) + weaponPower[0]);
+            Console.WriteLine(" " + Weapon[1].PadRight(10) + loadedAmmo[1] + "/" + weaponCapacity[1] + "".PadRight(8) + reserveAmmo[1] + "".PadRight(8) + weaponPower[1]);
+            Console.WriteLine(" " + Weapon[2].PadRight(10) + loadedAmmo[2] + "/" + weaponCapacity[2] + "".PadRight(8) + reserveAmmo[2] + "".PadRight(8) + weaponPower[2]);
+            Console.WriteLine(" " + Weapon[3].PadRight(9) + loadedAmmo[3] + "/" + weaponCapacity[3] + "".PadRight(8) + reserveAmmo[3] + "".PadRight(8) + weaponPower[3]);
             #region Mid
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("-----------------------------------");
