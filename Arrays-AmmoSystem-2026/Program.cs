@@ -43,72 +43,125 @@ namespace Arrays_WeaopnSystem_2026
         {
             //Console.WriteLine("Hello world");
 
-            #region //Pistol
+            #region Pistol
             SwitchWeapon(0);
             Fire();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             PickupAmmo(3);
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             ReloadAmmo();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             Fire();
             ShowWeaponHUD();
             #endregion
-
-            #region ForegroundColor
+            #region Next
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\nPress any key for Shotgun....");
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.Clear();
             #endregion
 
-            #region //Shotgun
+            #region Shotgun
             SwitchWeapon(1);
             Fire();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             PickupAmmo(5);
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             ReloadAmmo();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             Fire();
             ShowWeaponHUD();
             #endregion
-
-            #region ForegroundColor
+            #region Next
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\nPress any key for Rocket....");
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.Clear();
             #endregion
 
-            #region //Rocket
+            #region Rocket
             SwitchWeapon(2);
             Fire();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             PickupAmmo(30);
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             ReloadAmmo();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             Fire();
             ShowWeaponHUD();
             #endregion
-
-            #region ForegroundColor
+            #region Next
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\nPress any key for Rifle....");
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.Clear();
             #endregion
 
-            #region //Rifle
+            #region Rifle
             SwitchWeapon(3);
             Fire();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             PickupAmmo(50);
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             ReloadAmmo();
             ShowWeaponHUD();
+            Console.ReadKey();
+            Console.Clear();
+
             Fire();
             ShowWeaponHUD();
             #endregion
-
+            #region End
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\nPress any key to exit....");
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.Clear();
+            #endregion
         }
 
         static void ShowWeaponHUD()
